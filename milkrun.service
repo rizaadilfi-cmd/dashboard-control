@@ -1,0 +1,14 @@
+[Unit]
+Description=PT Nifco Milkrun Delivery Control System (FastAPI)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/var/www/milkrun
+ExecStart=/var/www/milkrun/venv/bin/uvicorn backend:app --host 127.0.0.1 --port 8000 --workers 2
+Restart=always
+RestartSec=5
+Environment="PYTHONUNBUFFERED=1"
+
+[Install]
+WantedBy=multi-user.target
